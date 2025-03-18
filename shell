@@ -1,0 +1,4 @@
+docker build -t mon_nom-flask-app .
+docker tag mon_nom-flask-app votre_username/mon_nom-flask-app
+docker push votre_username/mon_nom-flask-app
+docker run -p 5000:5000 mon_nom-flask-app
