@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+    
+    environment {
+        DOCKER_IMAGE = "lerduruk/biscene-flask-app"
+    }
+
+    stages {
+        stage('Clonage') {
+            steps {
+                git 'https://github.com/mbiscene/cc-devops.git'
+            }
+        }
+        
+        stage('Construction de l’image') {
+            steps {
+                script {
+                    sh 'docker build -t $DOCKER_IMAGE .'
+                }
+            }
+        }
+        
+        stage('Authentification DockerHub') {
+            steps {
+                script {
+                    sh 'echo $DOCKER_PASSWORD | docker login -u $lerduruk --password-stdin'
+                }
+            }
+        }
+
+        stage('Publication sur DockerHub') {
+            steps {
+                script {
+                    sh 'docker push $DOCKER_IMAGE'
+                }
+            }
+        }
+    }
+}
