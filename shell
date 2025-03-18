@@ -1,4 +1,4 @@
-docker build -t mon_nom-flask-app .
-docker tag mon_nom-flask-app votre_username/mon_nom-flask-app
-docker push votre_username/mon_nom-flask-app
-docker run -p 5000:5000 mon_nom-flask-app
+docker build -t biscene-flask-app .
+docker tag biscene-flask-app lerduruk/biscene-flask-app
+docker push lerduruk/biscene-flask-app
+docker run -p 5000:5000 biscene-flask-app
